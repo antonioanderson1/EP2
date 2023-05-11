@@ -1,0 +1,53 @@
+def define_posicoes(l, c, o, t):
+    if o == "vertical":
+        posição = []
+        i = 0
+        while i < t:
+            posição.append([l+i,c])
+            i=i+1
+        return posição
+    else:
+        posição = []
+        j = 0
+        while j < t:
+            posição.append([l,c+j])
+            j=j+1
+        return posição
+
+def preenche_frota(frota,navio,linha,coluna,orientacao,tamanho):
+    a = define_posicoes(linha,coluna,orientacao,tamanho)
+    if frota == {}:
+        if navio == "porta-aviões":
+            frota['porta-aviões']=[]
+            frota['porta-aviões'].append(a)
+        elif navio == "navio-tanque":
+            frota['navio-tanque']=[]
+            frota['navio-tanque'].append(a)
+        elif navio == "contratorpedeiro":
+            frota['contratorpedeiro']=[]
+            frota['contratorpedeiro'].append(a)
+        elif navio == "submarino":
+            frota['submarino']=[]
+            frota['submarino'].append(a)
+    else:
+        if navio == "porta-aviões" and navio in frota:
+            frota['porta-aviões'].append(a)
+        elif navio == "porta-aviões" and navio not in frota:
+            frota['porta-aviões']=[]
+            frota['porta-aviões'].append(a)
+        elif navio == "navio-tanque" and navio in frota:
+            frota['navio-tanque'].append(a)
+        elif navio == "navio-tanque" and navio not in frota:
+            frota['navio-tanque']=[]
+            frota['navio-tanque'].append(a)
+        elif navio == "contratorpedeiro" and navio in frota:
+            frota['contratorpedeiro'].append(a)
+        elif navio == "contratorpedeiro" and navio not in frota:
+            frota['contratorpedeiro']=[]
+            frota['contratorpedeiro'].append(a)
+        elif navio == "submarino" and navio in frota:
+            frota['submarino'].append(a)
+        elif navio == "submarino" and navio not in frota:
+            frota['submarino']=[]
+            frota['submarino'].append(a) 
+    return frota
