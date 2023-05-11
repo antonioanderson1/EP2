@@ -1,0 +1,15 @@
+def define_posicoes(l, c, o, t):
+    if o == "vertical":
+        posição = []
+        i = 0
+        while i < t:
+            posição.append([l+i,c])
+            i=i+1
+        return posição
+    else:
+        posição = []
+        j = 0
+        while j < t:
+            posição.append([l,c+j])
+            j=j+1
+        return posição
