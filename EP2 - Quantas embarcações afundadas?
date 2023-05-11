@@ -1,0 +1,14 @@
+def afundados(f,tabuleiro):
+    contador = 0
+    for navio in f:
+        for posicoes in f[navio]:
+            navio_completo = len(posicoes)
+            parte_atingida = 0
+            for pontos in posicoes:
+                if tabuleiro[pontos[0]][pontos[1]] == 'X':
+                    parte_atingida = parte_atingida+1
+                    
+            if parte_atingida == navio_completo:
+                contador = contador + 1
+            
+    return contador
