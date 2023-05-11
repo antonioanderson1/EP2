@@ -249,12 +249,21 @@ while jogando == True:
         if pares[0] == linha_atacar and pares[1] == coluna_atacar:
             print('A posição linha {0} e coluna {1} já foi informada anteriormente'.format(linha_atacar,coluna_atacar))
     pontos_informados.append([linha_atacar,coluna_atacar])
+
+    tabuleiro_oponente = faz_jogada(tabuleiro_oponente,linha_atacar,coluna_atacar)
     
+    navios_oponente = afundados(frota_oponente,tabuleiro_oponente)
+    if navios_oponente == 10:
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        break
+    else:
+        jogando = True
+
     linha_oponente = random.randint(0,9)
     coluna_oponente = random.randint(0,9)
 
     for pares in pontos_oponente:
-        while pares[0] == linha_atacar and pares[1] == coluna_atacar:
+        if pares[0] == linha_atacar and pares[1] == coluna_atacar:
             linha_oponente = random.randint(0,9)
             coluna_oponente = random.randint(0,9) 
 
@@ -264,19 +273,10 @@ while jogando == True:
 
     tabuleiro_jogador = faz_jogada(tabuleiro_jogador,linha_oponente,coluna_oponente)
 
-    tabuleiro_oponente = faz_jogada(tabuleiro_oponente,linha_atacar,coluna_atacar)
-
-    navios_oponente = afundados(frota_oponente,tabuleiro_oponente)
-    if navios_oponente == 10:
-        print('Parabéns! Você derrubou todos os navios do seu oponente!')
-        jogando = False
-    else:
-        jogando = True
-
     navios_jogador = afundados(p,tabuleiro_jogador)
 
     if navios_jogador == 10:
         print('Xi! O oponente derrubou toda a sua frota =(')
-        jogando = False
+        break
     else:
         jogando = True
